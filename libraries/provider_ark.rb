@@ -61,6 +61,8 @@ class Chef
         action_download
         action_unpack
         b = Chef::Resource::Script::Bash.new("configure with autoconf", run_context)
+        require "pry"
+        pry
         b.cwd new_resource.path
         b.new_resource.environment
         b.code "./configure #{new_resource.autoconf_opts.join(' ')}"
