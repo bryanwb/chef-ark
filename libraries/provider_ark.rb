@@ -102,7 +102,7 @@ class Chef
         b.cwd new_resource.path
         b.environment new_resource.environment
         b.code "make install"
-        b.run_action(:run) unless 
+        b.run_action(:run)
       end
 
       # needs a test, start here http://guide.python-distribute.org/quickstart.html
