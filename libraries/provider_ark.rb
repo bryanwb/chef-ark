@@ -53,7 +53,6 @@ class Chef
         set_paths
         action_download
         action_unpack
-        action_set_owner new_resource.path
         action_install_binaries
         action_link_paths
       end
@@ -158,7 +157,6 @@ class Chef
         set_put_paths
         action_download
         action_unpack
-        action_set_owner new_resource.path
       end
 
       def action_cherry_pick_contents(full_path)
@@ -185,6 +183,7 @@ class Chef
         cmd = expand_cmd
         unless unpacked? new_resource.path
           eval(cmd)
+          action_set_owner new_resource.path
           new_resource.updated_by_last_action(true)
         end
       end
